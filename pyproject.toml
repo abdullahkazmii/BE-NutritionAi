@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "be-nutritionai"
+version = "0.1.0"
+description = ""
+authors = ["Abdullah <iamabdullah234@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.5"
+uvicorn = "^0.32.1"
+langchain = "^0.3.7"
+openai = "^1.55.0"
+pydantic = {extras = ["email"], version = "^2.10.3"}
+python-dotenv = "^1.0.1"
+langchain-community = "^0.3.8"
+SQLAlchemy = "^1.4"
+psycopg2 = "^2.9.10"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-jose = "^3.3.0"
+python-multipart = "^0.0.19"
+rich = "^13.9.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

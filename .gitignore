@@ -1,0 +1,77 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+
+# Virtual environments
+*.venv
+venv/
+ENV/
+env/
+build/
+.venv/
+
+# Cache files and directories
+*.egg
+*.egg-info/
+.eggs/
+*.pyo
+.Python
+
+# Log files
+*.log
+
+# Docker
+.env
+
+
+# FastAPI/Uvicorn
+*.pid
+
+# Local development settings
+*.sqlite3
+*.db
+*.ini
+*.cfg
+
+# pyproject.toml backups
+.pyproject.toml.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# System files
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+.pyre/
+pyrightconfig.json
+
+# Linting
+.pylint.d/
+
+# Other IDE/Editor
+*.sublime*
+*.code-workspace
+*.kate-swp
+
+
