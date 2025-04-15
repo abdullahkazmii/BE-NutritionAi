@@ -40,6 +40,30 @@ event.listen(User.__table__, "after_create", initialize_table)
 
 app = FastAPI()
 
+origin = [
+    "https://nutritionai.crunchyapps.com",
+    "https://nutritionai-backend.crunchyapps.com",
+    "http://localhost:5173"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origin,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["*"])
+
+
+@app.middleware("http")
+async def enforce_https(request, call_next):
+    if request.headers.get("x-forwarded-proto") == "http":
+        url = request.url.replace(scheme="https")
+        return RedirectResponse(url, status_code=301)
+    return await call_next(request)
+
 # import user router
 app.include_router(login.router)
 app.include_router(user.router)
