@@ -5,7 +5,14 @@ from .models import User
 from passlib.hash import bcrypt
 from sqlalchemy import event
 from app.user import user
-from app.user.user import router as user_router
+from app.auth import login
+from app.chatapp import langchain_utils
+from app.formdata import form
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.trustedhost import TrustedHostMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.responses import RedirectResponse
+from rich import traceback
 
 load_dotenv()
 
@@ -34,7 +41,10 @@ event.listen(User.__table__, "after_create", initialize_table)
 app = FastAPI()
 
 # import user router
-app.include_router(user_router)
+app.include_router(login.router)
+app.include_router(user.router)
+app.include_router(langchain_utils.router)
+app.include_router(form.router)
 
 @app.get("/")
 async def start():
