@@ -6,7 +6,7 @@ from passlib.hash import bcrypt
 from sqlalchemy import event
 from app.user import user
 from app.auth import login
-from app.chatapp import langchain_utils
+from app.plan_generation import langchain_utils
 from app.formdata import form
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
