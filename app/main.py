@@ -5,7 +5,7 @@ from .models import User
 from passlib.hash import bcrypt
 from sqlalchemy import event
 from app.user import user
-from app.user import router as user_router
+from app.user.user import router as user_router
 
 load_dotenv()
 
@@ -34,8 +34,11 @@ event.listen(User.__table__, "after_create", initialize_table)
 app = FastAPI()
 
 # import user router
-app.include_router(user_router, tags=["user"])
+app.include_router(user_router)
 
+@app.get("/")
+async def start():
+    return {"status": "NutritionAI is running"}
 
 @app.get("/health")
 async def health():
