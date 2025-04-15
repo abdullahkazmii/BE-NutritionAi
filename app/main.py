@@ -5,6 +5,7 @@ from .models import User
 from passlib.hash import bcrypt
 from sqlalchemy import event
 from app.user import user
+from app.user import router as user_router
 
 load_dotenv()
 
@@ -31,6 +32,9 @@ def initialize_table(target, connection, **kw):
 event.listen(User.__table__, "after_create", initialize_table)
 
 app = FastAPI()
+
+# import user router
+app.include_router(user_router, tags=["user"])
 
 
 @app.get("/health")
